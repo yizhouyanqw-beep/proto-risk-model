@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "proto-risk-model"
+version = "0.1.0"
+description = "A factor-based risk scoring framework for prototype device security"
+authors = [
+    { name = "Yizhou Yan" }
+]
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "matplotlib",
+    "pandas",
+]
+
+[project.urls]
+Homepage = "https://github.com/yizhouyanqw-beep/proto-risk-model"
+
+[tool.setuptools.packages.find]
+include = ["proto_risk_model"]

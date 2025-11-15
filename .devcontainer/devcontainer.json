@@ -1,0 +1,58 @@
+{
+  "name": "Proto Risk Model Dev",
+
+  // Use official Python 3.10 development container from Microsoft
+  "image": "mcr.microsoft.com/devcontainers/python:3.10",
+
+  "features": {
+    // Common utilities (git, zsh, curl, etc.)
+    "ghcr.io/devcontainers/features/common-utils:2": {},
+
+    // Python 3.10 environment
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.10"
+    }
+  },
+
+  // This command runs automatically after the container is created.
+  // It installs your project in editable mode so the package is immediately importable.
+  "postCreateCommand": "pip install -e .",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        // Python language support
+        "ms-python.python",
+
+        // Fast type checking / IntelliSense
+        "ms-python.vscode-pylance",
+
+        // Jupyter Notebook support
+        "ms-toolsai.jupyter",
+        "ms-toolsai.jupyter-keymap",
+        "ms-toolsai.jupyter-renderers"
+      ],
+
+      "settings": {
+        // Default interpreter inside container
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+
+        // Helps VSCode and Pylance find your package for autocompletion
+        "python.analysis.extraPaths": [
+          "${workspaceFolder}/proto_risk_model"
+        ]
+      }
+    }
+  },
+
+  // Use non-root user for VSCode
+  "remoteUser": "vscode",
+
+  // Ensure matplotlib works inside Jupyter / Codespaces without GUI backend
+  "containerEnv": {
+    "MPLBACKEND": "Agg"
+  },
+
+  // Default project directory inside the container
+  "workspaceFolder": "/workspaces/codespaces-jupyter"
+}
