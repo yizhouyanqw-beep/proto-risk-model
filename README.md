@@ -114,3 +114,56 @@ proto_risk_model/
 └── config.py          # Default factor weighting
 ```
 
+## Mathematical Foundation
+1. Weighted Factor Model
+```
+risk = Σ (w_i * f_i)
+```
+Where
+- fᵢ = normalized factor score
+- wᵢ = user-defined or default factor weight
+
+2. Monte Carlo Perturbation
+Each environmental factor is perturbed via Gaussian shocks:
+```
+xₜ = clip(x₀ + εₜ),  where  εₜ ~ N(0, σ²)
+```
+Models lifecycle uncertainty (factory instability, logistics delays, human error).
+
+3. Tail Risk (95th percentile)
+```
+P95 = score at 95th percentile of simulation distribution
+```
+Identifies low-frequency, high-impact security exposures.
+
+## Example Use Cases
+1. Prototype lifecycle audits
+Risk evolution across R&D → manufacturing → demo → retirement.
+
+2. Supply-chain transitions
+Impact of:
+- geolocation changes
+- vendor changes
+- Logistics volatility
+
+3. Security policy tuning
+Model improvements from tighter access control or chain-of-custody logging.
+
+4. Hardware governance
+Supports hardware program owners in risk-informed decision making.
+
+## Development
+This repo includes a .devcontainer configuration with:
+- Preinstalled Python 3.10
+- Auto-run `pip install -e .`
+- Jupyter extensions
+- Matplotlib backend configured
+
+To use:
+```
+Code → Create Codespace on main
+```
+Everything else sets up automatically.
+
+## License
+MIT License — see `LICENSE`.
